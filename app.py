@@ -10,9 +10,11 @@ class Storage:
 
     def _load_all(self):
         if not os.path.exists(self.filename):
-            return
-        with open(self.filename, 'r', encoding='UTF-8') as f:
-            self.messages = json.load(f)
+            with open(self.filename, 'w', encoding='UTF-8') as f:
+                json.dump([], f)
+        else:
+            with open(self.filename, 'r', encoding='UTF-8') as f:
+                self.messages = json.load(f)
 
     def _save_all(self):
         with open(self.filename, 'w', encoding='UTF-8') as f:

@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+    docker_project:
+      container_name: my_server
+      build:
+        context: .
+        dockerfile: Dockerfile
+      ports:
+        - 5000:5000
+      volumes:
+        - .docker/storage.json:/home/docker_project/storage.json
+
